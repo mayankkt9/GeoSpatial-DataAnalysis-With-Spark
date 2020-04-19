@@ -47,5 +47,43 @@ object HotcellUtils {
     return calendar.get(Calendar.DAY_OF_MONTH)
   }
 
-  // YOU NEED TO CHANGE THIS PART
+  def findNeighbors(maxX: Double, minX: Double, maxY: Double, minY: Double, maxZ: Int, minZ: Int, x: Double, y: Double, z: Int): Int =
+  {
+    var n = 0
+  
+    if(x == maxX || x == minX){
+      n = n + 1
+    }
+
+    if(y == maxY || y == minY){
+      n = n + 1
+    }
+
+    if(z == maxZ || z == minZ){
+      n = n + 1
+    }
+
+    if (n==1){
+      return 17
+    }
+    
+    if (n==2){
+      return 11
+    }
+
+    if (n==3){
+      return 7
+    }
+  
+    return 26
+
+  }
+
+  def calculateZ(w: Double, sumX: Double, s: Double, numCells: Double, xBar: Double): Double =
+  {
+    val numerator = sumX - xBar*w
+    val denominator = s*Math.sqrt((numCells*w - w*w)/(numCells-1.0))
+    return numerator/denominator
+  }
+
 }
