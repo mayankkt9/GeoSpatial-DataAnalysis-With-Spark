@@ -30,7 +30,7 @@ object HotzoneAnalysis {
     joinDf.createOrReplaceTempView("joinResult")
 
     // Find number of points within each rectangle
-    val resultDf = spark.sql("select rectangle,count(point) as hotness from joinResult group by rectangle")
+    val resultDf = spark.sql("select rectangle,count(point) as hotness from joinResult group by rectangle order by rectangle")
 
     return resultDf
   }
